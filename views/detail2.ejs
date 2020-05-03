@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title><%= title %> </title>
+<style>
+    .img{
+        width: 100px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="col-12">
+            <p class="h1 col-12">DETALLE DEL PRODUCTO</p>
+            <hr>
+            <div class="img col-12">
+                <p class="style="width=100px"><img class="img-fluid" src="/images/products/<%= productos.image %>" alt=""> </p>
+            </div>
+            <div class="productos col-12">
+                <p><strong>Nombre del producto:</strong>  <%= productos.name %></p>
+                <p><strong>Numero de Id:</strong> <%= productos.id %></p>
+                <p><strong>Descripcion del producto:</strong> <%= productos.description %> </p>
+                <p><strong>Precio:</strong> $<%= aMiles(productos.price) %> </p>
+                <p><strong>Categoria: </strong> <%= productos.category %> </p>
+            </div>
+            <a href="http://localhost:3000/">
+                <button type="button" class="btn btn-primary">Volver al Home</button>
+            </a>
+        </div>
+
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
