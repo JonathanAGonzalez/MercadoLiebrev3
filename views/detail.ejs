@@ -3,94 +3,102 @@
 <!-- Include Head -->
 <%- include('partials/head', ) %>
 
-<body>
-	<!-- Header -->
-	<%- include('partials/headerNavbar') %>
-	<!-- /Header -->
+    <body>
+        <!-- Header -->
+        <%- include('partials/headerNavbar') %>
+            <!-- /Header -->
 
-	<!-- product detail -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Detalle del producto: <%= productos.name %></h2>
-			</div>
-		</div>
-		<div class="product-detail">
-			<div class="row">
-				<div class="col-12 col-lg-8">
-					<img class="img-fluid d-flex" style="width: 50%; margin-left: 20%;" src="/images/products/<%= productos.image %>" alt="product image"
-						>
-					<p class="h3">
-						<%= productos.description %>
-					</p>
-				</div>
-				<div class="col-12 col-lg-4">
-					<article class="product-detail-info">
-						<h2 class="product-detail-title"><%= productos.name %></h2>
+            <!-- product detail -->
+            <div class="container products-wrapper">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="products-title">Detalle del producto:
+                            <%= productos.name %>
+                        </h2>
+                    </div>
+                </div>
+                <div class="product-detail">
+                    <div class="row">
+                        <div class="col-12 col-lg-8">
+                            <img class="img-fluid d-flex" style="width: 50%; margin-left: 20%;" src="/images/products/<%= productos.image %>" alt="product image">
+                            <p class="h3">
+                                <%= productos.description %>
+                            </p>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <article class="product-detail-info">
+                                <h2 class="product-detail-title">
+                                    <%= productos.name %>
+                                </h2>
 
-						<p class="product-detail-price small">
+                                <p class="product-detail-price small">
 
-							<!--PRECIO PRINCIPAL-->
-							<% if (productos.discount) { %>
-								<h2><del style="color:red">$<%= productos.price %></del></h2>
-							<% } else {%>
-								<h2>$<%= productos.price %></h2>
-								<%}%>
-							<span>
+                                    <!--PRECIO PRINCIPAL-->
+                                    <% if (productos.discount) { %>
+                                        <h2><del style="color:red">$<%= productos.price %></del></h2>
+                                        <% } else {%>
+                                            <h2>$
+                                                <%= productos.price %>
+                                            </h2>
+                                            <%}%>
+                                                <span>
 							</span>
 
-							<!--SACO CUENTA PARA PONERLE DESCUENTO-->
-							<%let preciofinal =productos.price-(productos.discount*productos.price/100)
+                                                <!--SACO CUENTA PARA PONERLE DESCUENTO-->
+                                                <%let preciofinal =productos.price-(productos.discount*productos.price/100)
 								preciofinal = Math.round(preciofinal)%>
 
-							<!--COMPRARO SI NO TIENE DESCUENTO-->
-							<% if (productos.discount > 0) { %>
-							<p class="product-detail-price">
-								producto con descuento del <%=productos.discount%>%
-							</p>
-							<% } else{%>
-							<p class="product-detail-price">
-								Producto Sin descuento
-							</p>
-							<%}%>
-							</p>
-							<!--MUESTRO PRECIO CON DESCUENTO-->
-							<p class="product-detail-price">
-							<% if (productos.discount) { %>
-								<h2 style="font-size: 30px;">$<%=preciofinal%></h2>
-							<% } %>
+                                                    <!--COMPRARO SI NO TIENE DESCUENTO-->
+                                                    <% if (productos.discount > 0) { %>
+                                                        <p class="product-detail-price">
+                                                            producto con descuento del
+                                                            <%=productos.discount%>%
+                                                        </p>
+                                                        <% } else{%>
+                                                            <p class="product-detail-price">
+                                                                Producto Sin descuento
+                                                            </p>
+                                                            <%}%>
+                                </p>
+                                <!--MUESTRO PRECIO CON DESCUENTO-->
+                                <p class="product-detail-price">
+                                    <% if (productos.discount) { %>
+                                        <h2 style="font-size: 30px;">$
+                                            <%=preciofinal%>
+                                        </h2>
+                                        <% } %>
 
-						</p>
+                                </p>
 
-						<ul class="actions-list">
-							<li>
-								<i class="fas fa-credit-card"></i>
-								<p>Pagá en 12 cuotas sin interes</p>
-							</li>
-							<li>
-								<i class="fas fa-store"></i>
-								<p>Retiro gratis en locales del vendedor</p>
-							</li>
-						</ul>
+                                <ul class="actions-list">
+                                    <li>
+                                        <i class="fas fa-credit-card"></i>
+                                        <p>Pagá en 12 cuotas sin interes</p>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-store"></i>
+                                        <p>Retiro gratis en locales del vendedor</p>
+                                    </li>
+                                </ul>
 
-						<a href="#" class="btn btn-success">COMPRAR AHORA</a>
-						<hr>
-						
-						<a href="/product/edit/<%= productos.id%>" class="btn btn-warning">EDITAR PRODUCTO</a>
-						<form action="/products/id/delete" method="POST" style="display: inline-flex">
-							<button type="submit" class="btn btn-danger">ELIMINAR</button>
-						</form>
-					</article>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /product detail -->
+                                <a href="#" class="btn btn-success">COMPRAR AHORA</a>
+                                <hr>
 
-	<!-- footer -->
-	<%- include('partials/footer') %>
-	<!-- /footer -->
+                                <a href="/product/edit/<%= productos.id%>" class="btn btn-warning">EDITAR PRODUCTO</a>
+                                <form action="/product/detail/<%= productos.id%>" method="POST" style="display: inline-flex">
+                                    <button type="submit" class="btn btn-danger">ELIMINAR</button>
+                                </form>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /product detail -->
 
-</body>
+            <!-- footer -->
+            <%- include('partials/footer') %>
+                <!-- /footer -->
+
+    </body>
 
 </html>
